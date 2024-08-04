@@ -21,16 +21,21 @@ default_args = {
     'email_on_failure': False,
     'email_on_retry': False
 }
-with DAG(
-    'data_001_replicate',
-    default_args=default_args,
-    description='A simple replication from mysql to redshift',
-    schedule_interval='0 * * * *',
-    start_date=datetime(2024, 8, 5),
-    catchup=False,
-    tags=['replicate'],
-) as dag:
 
+
+def log_sql():
+    print("+++++++HEELLLOOOO==========")
+
+
+with DAG(
+        'data_001_replicate',
+        default_args=default_args,
+        description='A simple replication from mysql to redshift',
+        schedule_interval='0 * * * *',
+        start_date=datetime(2024, 8, 5),
+        catchup=False,
+        tags=['replicate'],
+) as dag:
     task_replicate = PythonOperator(
         task_id="log_sql_query",
         python_callable=log_sql
