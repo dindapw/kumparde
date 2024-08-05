@@ -3,16 +3,6 @@
 A simple ELT pipeline to replicate articles data from MySQL to Redshift.
 This project uses AWS because the author chose to play safe and thorough by using cloud technology she's most familiar with.
 
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-- [Contact](#contact)
 
 ## Architecture
 
@@ -20,10 +10,9 @@ This project uses AWS because the author chose to play safe and thorough by usin
 - Version: 8.0.35
 
 ### Lightsail for Airflow
-- Version: 
-- 
+- Version: 2.9
 
-
+### Redshift Serverless
 
 ## Data
 
@@ -78,30 +67,3 @@ FROM
 ```
 *Note that `ELSE NULL` is unnecessary. But on more than one occasion, the author forgot what the default value for `ELSE` is. So she chose to include it for good measure.
 
-### Installation Steps
-
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/username/project-name.git
-    cd project-name
-    ```
-2. Install dependencies:
-    ```bash
-    npm install
-    ```
-3. Set up the database:
-    ```bash
-    mysql -u root -p < database/schema.sql
-    ```
-4. Run the application:
-    ```bash
-    npm start
-    ```
-
-## Usage
-
-Instructions and examples for using the project.
-
-```bash
-# Basic usage example
-node app.js
