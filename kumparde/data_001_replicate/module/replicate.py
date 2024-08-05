@@ -11,7 +11,7 @@ import boto3
 import pandas as pd
 import sqlalchemy as db
 
-from kumperde.common import config, get_db_connection
+from kumparde.common import config, get_db_connection
 import logging
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
