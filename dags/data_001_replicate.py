@@ -13,7 +13,7 @@ from textwrap import dedent
 from airflow import DAG
 
 from airflow.operators.python import PythonOperator
-import kumperde.data_001_replicate.module.replicate as data_001
+import kumparde.data_001_replicate.module.replicate as data_001
 
 default_args = {
     'owner': 'airflow',
