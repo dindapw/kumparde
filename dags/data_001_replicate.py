@@ -13,6 +13,7 @@ from textwrap import dedent
 from airflow import DAG
 
 from airflow.operators.python import PythonOperator
+import kumperde.data_001_replicate.module.replicate as data_001
 
 default_args = {
     'owner': 'airflow',
@@ -23,8 +24,13 @@ default_args = {
 }
 
 
-def log_sql():
-    print("+++++++HEELLLOOOO==========")
+def do_replicate():
+    data_001.replicate(source_db_type="mysql",
+                       source_schema="kumparde",
+                       source_table="articles",
+                       target_db_type="redshift",
+                       target_schema="kumparde",
+                       target_table="articles")
 
 
 with DAG(
@@ -37,8 +43,8 @@ with DAG(
         tags=['replicate'],
 ) as dag:
     task_replicate = PythonOperator(
-        task_id="log_sql_query",
-        python_callable=log_sql
+        task_id="task_replicate",
+        python_callable=do_replicate
     )
     # [END basic_task]
 

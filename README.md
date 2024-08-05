@@ -18,11 +18,11 @@ This project uses AWS because the author chose to play safe and thorough by usin
 
 ### RDS MySQL 
 - Version: 8.0.35
-- Accessible via Bastion Host
 
-### EC2 for Bastion Host
-- Public IP: 43.218.240.111
-- Accessible only from a whitelisted IP Address
+### Lightsail for Airflow
+- Version: 
+- 
+
 
 
 ## Data
@@ -58,19 +58,19 @@ INSERT INTO kumparde.articles(
     deleted_at
 )
 SELECT
-    heading as title,
-    article as content,
-    STR_TO_DATE(published_date, '%m/%d/%Y') as published_at,
+    "Heading" as title,
+    "Article" as content,
+    STR_TO_DATE("Date", '%m/%d/%Y') as published_at,
     FLOOR(RAND() * 500) + 1 AS author_id,
-    TIMESTAMP(DATE_SUB(STR_TO_DATE(published_date, '%m/%d/%Y'), INTERVAL 1 DAY), SEC_TO_TIME(FLOOR(RAND() * 86400))) AS created_at,
+    TIMESTAMP(DATE_SUB(STR_TO_DATE("Date", '%m/%d/%Y'), INTERVAL 1 DAY), SEC_TO_TIME(FLOOR(RAND() * 86400))) AS created_at,
     CASE
         WHEN MOD((FLOOR(RAND() * 500) + 1), 20) = 0 THEN
-            TIMESTAMP(DATE_ADD(STR_TO_DATE(published_date, '%m/%d/%Y'), INTERVAL 1 DAY), SEC_TO_TIME(FLOOR(RAND() * 86400)))
+            TIMESTAMP(DATE_ADD(STR_TO_DATE("Date", '%m/%d/%Y'), INTERVAL 1 DAY), SEC_TO_TIME(FLOOR(RAND() * 86400)))
         ELSE NULL
     END AS updated_at,
     CASE
         WHEN MOD((FLOOR(RAND() * 500) + 1), 83) = 0 THEN
-            TIMESTAMP(DATE_ADD(STR_TO_DATE(published_date, '%m/%d/%Y'), INTERVAL 1 DAY), SEC_TO_TIME(FLOOR(RAND() * 86400)))
+            TIMESTAMP(DATE_ADD(STR_TO_DATE("Date", '%m/%d/%Y'), INTERVAL 1 DAY), SEC_TO_TIME(FLOOR(RAND() * 86400)))
         ELSE NULL
     END AS deleted_at
 FROM
